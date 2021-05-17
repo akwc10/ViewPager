@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ViewPager</string>
+    <string name="view_pager_one_button">View Pager 1</string>
+    <string name="view_pager_two_button">View Pager 2</string>
+    <string name="no_view_pager_button">No View Pager</string>
+    <string name="detail_text_view">Detail</string>
+</resources>
