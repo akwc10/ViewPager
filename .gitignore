@@ -1,0 +1,12 @@
+.idea
+.gradle
+*/build
+*/gen
+local.properties
+gradle.properties
+*/obj
+/build
+*.iml
+*.trace
+*.lock
+
