@@ -11,7 +11,7 @@ import com.my.viewpager.R
 
 class ViewPagerOneFragment : Fragment() {
     private lateinit var viewPagerOneAdapter: ViewPagerOneAdapter
-    private lateinit var viewPager1: ViewPager
+    private lateinit var viewPagerOne: ViewPager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,12 +21,12 @@ class ViewPagerOneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "View Pager 1"
+        requireActivity().title = "View Pager One"
         viewPagerOneAdapter = ViewPagerOneAdapter(childFragmentManager)
-        viewPager1 = view.findViewById(R.id.pager_1)
-        viewPager1.adapter = viewPagerOneAdapter
+        viewPagerOne = view.findViewById(R.id.view_pager_one)
+        viewPagerOne.adapter = viewPagerOneAdapter
 
-        val tabLayout1 = view.findViewById<TabLayout>(R.id.tab_layout_1)
-        tabLayout1.setupWithViewPager(viewPager1)
+        val tabLayout1 = view.findViewById<TabLayout>(R.id.tab_layout_one)
+        tabLayout1.setupWithViewPager(viewPagerOne)
     }
 }

@@ -14,9 +14,8 @@ import kotlinx.coroutines.*
 import java.util.*
 
 class NoViewPagerFragment : Fragment() {
-    private val data = List(100) { "Item ${it + 1}" }
     private val list_container by lazy { requireView().findViewById<RecyclerView>(R.id.list_container) }
-    private val myAdapter by lazy { MyListAdapter() }
+    private val myListAdapter by lazy { MyListAdapter() }
     private val myCoroutineScope by lazy { CoroutineScope(Job() + Dispatchers.Main) }
 
     override fun onCreateView(
@@ -26,35 +25,34 @@ class NoViewPagerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         requireActivity().title = "Fragment with ListAdapter"
         list_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = myAdapter
+            adapter = myListAdapter
             addItemDecoration(DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL))
         }
-        myAdapter.stateRestorationPolicy =
+        myListAdapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
-        savedInstanceState?.getStringArrayList(DATA)?.let {
-//            myAdapter.submitList(it)
+        savedInstanceState?.getStringArrayList(KEY_DATA_ARG)?.let {
+//            myListAdapter.submitList(it)
             submitListDelayed(it)
-        } ?: submitListDelayed(data)
+        } ?: submitListDelayed(DATA)
     }
 
     private fun submitListDelayed(data: List<String>, delayMs: Long = 1500) {
         myCoroutineScope.launch {
             delay(delayMs)
-            myAdapter.submitList(data)
+            myListAdapter.submitList(data)
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.apply {
-            putStringArrayList(
-                DATA,
-                myAdapter.currentList.toList() as ArrayList<String>
-            )
+            putStringArrayList(KEY_DATA_ARG,
+                myListAdapter.currentList.toList() as ArrayList<String>)
         }
         super.onSaveInstanceState(outState)
     }
@@ -65,6 +63,7 @@ class NoViewPagerFragment : Fragment() {
     }
 
     companion object {
-        private const val DATA = "data"
+        private const val KEY_DATA_ARG = "data"
+        private val DATA = List(100) { "Item ${it + 1}" }
     }
 }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.my.viewpager.R
 
 class DetailFragment : Fragment() {
-    private val position by lazy { arguments?.getInt(POSITION) ?: -1 }
+    private val position by lazy { arguments?.getInt(KEY_POSITION_ARG) ?: -1 }
     private val detailTextView by lazy { requireView().findViewById<TextView>(R.id.detail_text_view) }
 
     override fun onCreateView(
@@ -30,10 +30,10 @@ class DetailFragment : Fragment() {
     }
 
     companion object {
-        private const val POSITION = "position"
+        private const val KEY_POSITION_ARG = "position"
 
         fun newInstance(position: Int) = DetailFragment().apply {
-            arguments = Bundle().apply { putInt(POSITION, position) }
+            arguments = Bundle().apply { putInt(KEY_POSITION_ARG, position) }
         }
     }
 }

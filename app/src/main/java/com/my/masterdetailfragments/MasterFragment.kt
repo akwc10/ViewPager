@@ -14,10 +14,9 @@ import kotlinx.coroutines.*
 import java.util.*
 
 class MasterFragment : Fragment() {
-    private val data = List(100) { "Item ${it + 1}" }
-    private val position by lazy { arguments?.getInt(POSITION) ?: -1 }
+    private val position by lazy { arguments?.getInt(KEY_POSITION_ARG) ?: -1 }
     private val list_container by lazy { requireView().findViewById<RecyclerView>(R.id.list_container) }
-    private val myAdapter by lazy { MyListAdapter() }
+    private val myListAdapter by lazy { MyListAdapter() }
     private val myCoroutineScope get() = CoroutineScope(Job() + Dispatchers.Main)
     private var job: Job? = null
 
@@ -34,27 +33,27 @@ class MasterFragment : Fragment() {
         list_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            adapter = myAdapter
+            adapter = myListAdapter
             addItemDecoration(DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL))
         }
-        myAdapter.stateRestorationPolicy =
+        myListAdapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
-        savedInstanceState?.getStringArrayList(DATA)?.let {
-            myAdapter.submitList(it)
-        } ?: submitListDelayed(data)
+        savedInstanceState?.getStringArrayList(KEY_DATA_ARG)?.let {
+            myListAdapter.submitList(it)
+        } ?: submitListDelayed(DATA)
     }
 
     private fun submitListDelayed(data: List<String>, delayMs: Long = 2000) {
         job = myCoroutineScope.launch {
             delay(delayMs)
-            myAdapter.submitList(data)
+            myListAdapter.submitList(data)
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.apply {
-            putStringArrayList(DATA, myAdapter.currentList.toList() as ArrayList<String>)
+            putStringArrayList(KEY_DATA_ARG, myListAdapter.currentList.toList() as ArrayList<String>)
         }
         super.onSaveInstanceState(outState)
     }
@@ -66,11 +65,12 @@ class MasterFragment : Fragment() {
     }
 
     companion object {
-        private const val POSITION = "position"
-        private const val DATA = "data"
+        private const val KEY_POSITION_ARG = "position"
+        private const val KEY_DATA_ARG = "data"
+        private val DATA = List(100) { "Item ${it + 1}" }
 
         fun newInstance(position: Int) = MasterFragment().apply {
-            arguments = Bundle().apply { putInt(POSITION, position) }
+            arguments = Bundle().apply { putInt(KEY_POSITION_ARG, position) }
         }
     }
 }

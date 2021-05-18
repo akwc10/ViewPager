@@ -10,7 +10,7 @@ import androidx.fragment.app.commit
 import com.my.viewpager.R
 
 class ParentFragment : Fragment() {
-    private val position by lazy { arguments?.getInt(POSITION) ?: -1 }
+    private val position by lazy { arguments?.getInt(KEY_POSITION_ARG) ?: -1 }
     private val detail_container: FragmentContainerView? by lazy { requireActivity().findViewById(R.id.detail_container) }
 
     override fun onCreateView(
@@ -38,10 +38,10 @@ class ParentFragment : Fragment() {
     }
 
     companion object {
-        private const val POSITION = "position"
+        private const val KEY_POSITION_ARG = "position"
 
         fun newInstance(position: Int) = ParentFragment().apply {
-            arguments = Bundle().apply { putInt(POSITION, position) }
+            arguments = Bundle().apply { putInt(KEY_POSITION_ARG, position) }
         }
     }
 }

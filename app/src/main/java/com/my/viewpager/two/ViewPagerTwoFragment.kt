@@ -12,7 +12,7 @@ import com.my.viewpager.R
 
 class ViewPagerTwoFragment : Fragment() {
     private lateinit var viewPagerTwoAdapter: ViewPagerTwoAdapter
-    private lateinit var viewPager2: ViewPager2
+    private lateinit var viewPagerTwo: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,13 +22,13 @@ class ViewPagerTwoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "View Pager 2"
+        requireActivity().title = "View Pager Two"
         viewPagerTwoAdapter = ViewPagerTwoAdapter(this)
-        viewPager2 = view.findViewById(R.id.pager_2)
-        viewPager2.adapter = viewPagerTwoAdapter
+        viewPagerTwo = view.findViewById(R.id.view_pager_two)
+        viewPagerTwo.adapter = viewPagerTwoAdapter
 
-        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout_2)
-        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout_two)
+        TabLayoutMediator(tabLayout, viewPagerTwo) { tab, position ->
             tab.text = "TAB ${position + 1}"
         }.attach()
     }

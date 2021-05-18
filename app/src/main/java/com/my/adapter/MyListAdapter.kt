@@ -19,9 +19,9 @@ class MyListAdapter : ListAdapter<String, MyListAdapter.ViewHolder>(DiffCallback
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val row = getItem(position)
+        val item = getItem(position)
 
-        holder.textView.text = row
+        holder.textView.text = item
     }
 }
 
