@@ -4,22 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.my.behaviors.BackToOptionsButtonBehavior
+import com.my.behaviors.BehaviorFragment
 import com.my.viewpager.R
 
-class ViewPagerTwoFragment : Fragment() {
+class ViewPagerTwoFragment : BehaviorFragment() {
     private lateinit var viewPagerTwoAdapter: ViewPagerTwoAdapter
     private lateinit var viewPagerTwo: ViewPager2
-    private var backToOptionsButtonBehavior: BackToOptionsButtonBehavior? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        backToOptionsButtonBehavior = BackToOptionsButtonBehavior(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,10 +31,5 @@ class ViewPagerTwoFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPagerTwo) { tab, position ->
             tab.text = "TAB ${position + 1}"
         }.attach()
-    }
-
-    override fun onDestroy() {
-        backToOptionsButtonBehavior = null
-        super.onDestroy()
     }
 }
