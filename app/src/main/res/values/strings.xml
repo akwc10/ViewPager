@@ -8,4 +8,6 @@
     <string name="please_select_an_option_title">Please Select an option</string>
     <string name="view_pager_two_title">View Pager Two</string>
     <string name="fragment_with_list_adapter_title">Fragment with ListAdapter</string>
+    <string name="action_favorite">Favourite</string>
+    <string name="action_settings">Settings</string>
 </resources>
