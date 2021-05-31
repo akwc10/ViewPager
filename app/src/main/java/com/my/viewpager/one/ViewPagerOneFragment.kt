@@ -21,7 +21,7 @@ class ViewPagerOneFragment : BehaviorFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "View Pager One"
+        requireActivity().title = getString(R.string.view_pager_one_title)
         viewPagerOneAdapter = ViewPagerOneAdapter(childFragmentManager)
         viewPagerOne = view.findViewById(R.id.view_pager_one)
         viewPagerOne.adapter = viewPagerOneAdapter

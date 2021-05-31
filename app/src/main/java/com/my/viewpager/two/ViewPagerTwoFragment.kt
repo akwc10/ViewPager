@@ -22,7 +22,7 @@ class ViewPagerTwoFragment : BehaviorFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "View Pager Two"
+        requireActivity().title = getString(R.string.view_pager_two_title)
         viewPagerTwoAdapter = ViewPagerTwoAdapter(this)
         viewPagerTwo = view.findViewById(R.id.view_pager_two)
         viewPagerTwo.adapter = viewPagerTwoAdapter

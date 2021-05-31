@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/optionsFragment">
+
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.my.options.OptionsFragment"
+        android:label="OptionsFragment"
+        tools:layout="@layout/options_fragment">
+        <action
+            android:id="@+id/action_optionsFragment_to_viewPagerOneFragment"
+            app:destination="@id/viewPagerOneFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_viewPagerTwoFragment"
+            app:destination="@id/viewPagerTwoFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_noViewPagerFragment"
+            app:destination="@id/noViewPagerFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerOneFragment"
+        android:name="com.my.viewpager.one.ViewPagerOneFragment"
+        android:label="ViewPagerOneFragment"
+        tools:layout="@layout/view_pager_one_fragment">
+        <action
+            android:id="@+id/action_viewPagerOneFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerTwoFragment"
+        android:name="com.my.viewpager.two.ViewPagerTwoFragment"
+        android:label="ViewPagerTwoFragment"
+        tools:layout="@layout/view_pager_two_fragment">
+        <action
+            android:id="@+id/action_viewPagerTwoFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noViewPagerFragment"
+        android:name="com.my.noviewpager.NoViewPagerFragment"
+        android:label="NoViewPagerFragment"
+        tools:layout="@layout/no_view_pager_fragment">
+        <action
+            android:id="@+id/action_noViewPagerFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
+    </fragment>
+</navigation>

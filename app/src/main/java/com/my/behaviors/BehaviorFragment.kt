@@ -8,7 +8,7 @@ abstract class BehaviorFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        backToOptionsButtonBehavior = BackToOptionsButtonBehavior(this)
+//        backToOptionsButtonBehavior = BackToOptionsButtonBehavior(this)
     }
 
     override fun onDestroy() {

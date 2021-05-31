@@ -26,7 +26,7 @@ class NoViewPagerFragment : BehaviorFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().title = "Fragment with ListAdapter"
+        requireActivity().title = getString(R.string.fragment_with_list_adapter_title)
         list_container.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)

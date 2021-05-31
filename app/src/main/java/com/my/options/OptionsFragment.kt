@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import com.my.noviewpager.NoViewPagerFragment
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import com.my.viewpager.R
-import com.my.viewpager.one.ViewPagerOneFragment
-import com.my.viewpager.two.ViewPagerTwoFragment
 
 class OptionsFragment : Fragment() {
     private val view_pager_one_button by lazy { requireActivity().findViewById<Button>(R.id.view_pager_one_button) }
@@ -24,17 +22,14 @@ class OptionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = "Please Select"
-        view_pager_one_button.setOnClickListener { showFragment(ViewPagerOneFragment()) }
-        view_pager_two_button.setOnClickListener { showFragment(ViewPagerTwoFragment()) }
-        no_view_pager_button.setOnClickListener { showFragment(NoViewPagerFragment()) }
+        requireActivity().title = getString(R.string.please_select_an_option_title)
+        view_pager_one_button.setOnClickListener { showFragment(OptionsFragmentDirections.actionOptionsFragmentToViewPagerOneFragment()) }
+        view_pager_two_button.setOnClickListener { showFragment(OptionsFragmentDirections.actionOptionsFragmentToViewPagerTwoFragment()) }
+        no_view_pager_button.setOnClickListener { showFragment(OptionsFragmentDirections.actionOptionsFragmentToNoViewPagerFragment()) }
     }
 
-    private fun showFragment(fragment: Fragment) {
-        parentFragmentManager.commit {
-            replace(R.id.main_container, fragment)
-            setReorderingAllowed(true)
-        }
+    private fun showFragment(directions: NavDirections) {
+        findNavController().navigate(directions)
     }
 
     override fun onDestroyView() {
