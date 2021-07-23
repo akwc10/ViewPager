@@ -1,9 +1,7 @@
 package com.my.options
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -16,6 +14,26 @@ class OptionsFragment : Fragment() {
     private val view_pager_one_button by lazy { requireActivity().findViewById<Button>(R.id.view_pager_one_button) }
     private val view_pager_two_button by lazy { requireActivity().findViewById<Button>(R.id.view_pager_two_button) }
     private val no_view_pager_button by lazy { requireActivity().findViewById<Button>(R.id.no_view_pager_button) }
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setHasOptionsMenu(true)
+//    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.main_overflow_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.refresh_view_pager_one -> {
+//                showFragment(ViewPagerOneFragment())
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
