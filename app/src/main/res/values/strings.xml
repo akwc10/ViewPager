@@ -5,4 +5,5 @@
     <string name="no_view_pager_button">No View Pager</string>
     <string name="detail_text_view">Detail</string>
     <string name="refresh_view_pager_one">Refresh View Pager One</string>
+    <string name="some_activity">Some Activity</string>
 </resources>

@@ -1,10 +1,12 @@
 package com.my.options
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.my.SomeActivity
 import com.my.noviewpager.NoViewPagerFragment
 import com.my.viewpager.R
 import com.my.viewpager.one.ViewPagerOneFragment
@@ -14,6 +16,7 @@ class OptionsFragment : Fragment() {
     private val view_pager_one_button by lazy { requireActivity().findViewById<Button>(R.id.view_pager_one_button) }
     private val view_pager_two_button by lazy { requireActivity().findViewById<Button>(R.id.view_pager_two_button) }
     private val no_view_pager_button by lazy { requireActivity().findViewById<Button>(R.id.no_view_pager_button) }
+    private val some_activity_button by lazy { requireActivity().findViewById<Button>(R.id.some_activity_button) }
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -46,6 +49,7 @@ class OptionsFragment : Fragment() {
         view_pager_one_button.setOnClickListener { showFragment(ViewPagerOneFragment()) }
         view_pager_two_button.setOnClickListener { showFragment(ViewPagerTwoFragment()) }
         no_view_pager_button.setOnClickListener { showFragment(NoViewPagerFragment()) }
+        some_activity_button.setOnClickListener { startActivity(Intent(context, SomeActivity::class.java)) }
     }
 
     private fun showFragment(fragment: Fragment) {
