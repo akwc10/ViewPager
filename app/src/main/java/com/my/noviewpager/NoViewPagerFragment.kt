@@ -1,5 +1,6 @@
 package com.my.noviewpager
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,9 @@ class NoViewPagerFragment : BehaviorFragment() {
     private val myListAdapter by lazy { MyListAdapter() }
     private val myCoroutineScope by lazy { CoroutineScope(Job() + Dispatchers.Main) }
 
+    init {
+        println("@@@ NoViewPagerFragment: $this")
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,12 +55,18 @@ class NoViewPagerFragment : BehaviorFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.apply {
-            putStringArrayList(
-                KEY_DATA_ARG,
-                myListAdapter.currentList.toList() as ArrayList<String>
-            )
+            if (myListAdapter.currentList.toList().isNotEmpty())
+                putStringArrayList(
+                    KEY_DATA_ARG,
+                    myListAdapter.currentList.toList() as ArrayList<String>
+                )
         }
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        println("@@@ noviepwager onconfigchanged")
     }
 
     override fun onDestroyView() {

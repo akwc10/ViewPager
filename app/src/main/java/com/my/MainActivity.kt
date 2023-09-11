@@ -1,5 +1,6 @@
 package com.my
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        println("@@@ onConfigurationChanged ${newConfig.orientation}, ${newConfig.smallestScreenWidthDp}")
     }
 
     private fun showFragment(fragment: Fragment) {

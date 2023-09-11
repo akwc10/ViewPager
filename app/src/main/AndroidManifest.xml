@@ -11,6 +11,7 @@
         android:theme="@style/Theme.AppSplash">
         <activity
             android:name="com.my.MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
